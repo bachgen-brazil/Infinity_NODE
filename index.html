@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGINA INICIAL</title>
+</head>
+<body>
+    <h1> LISTA DE FUNCINARIOS </h1>
+
+    <form id="novo_func">
+        <!-- Nome do Funcionario -->
+        <label for="nome_func"> NOME:</label>
+        <input type="text" id="nome_func" required>
+
+        <!-- Cargo do Funcionario -->
+        <label for="cargo_func"> Cargo:</label>
+        <input type="text" id="cargo_func" required>
+
+        <!-- Foto de Perfil -->
+        <label for="perfil_func">URL da FOTO DE PERFIL</label>
+        <input type="text" id="perfil_func" required>
+
+        <!-- Botão-->
+        <button type="submit"> ADICIONAR </label>
+    
+    </form>
+
+    <div id="lista_func">
+        <!-- Elementos Filhos/funcionários Cadastrados -->  
+    </div>
+
+    <script>
+        const funcionarios = []
+        const novos_funcionarios = document.getElementById("novo_func")
+        novos_funcionarios.addEventListener("submit",(e) => {
+            e.preventDefault()
+
+            const nome = document.getElementById("nome_func").value
+            const cargo = document.getElementById("cargo_func").value
+            const perfil = document.getElementById("perfil_func").value
+
+            const func_novo = {nome,cargo,perfil}
+            funcionarios.push(func_novo)
+
+
+            // div do HTML
+            const div = document.getElementById("lista_func")
+
+            //div criada para cada funcionario
+            const div_func = document.getElementById("div")
+
+            //nome
+            const p_nome = document.createElement("p") // Criando um Elemento do Tipo P
+            p_nome.textContent = `${func_novo.nome}` // Atribuindo valor a elemento - Usando a variavel adicionado ao ARRAY
+            p_nome.classList.add("p_nome") // Criando Class no HTML
+
+            //Cargo
+            const p_cargo = document.createElement("p")
+            p_cargo.textContent = `${func_novo.cargo}`
+            p_cargo.classList.add("p_cargo")
+
+            //Perfil
+            const img_perfil = document.createElement("div")
+            img_perfil.innerHTML = `<img scr ="${func_novo.perfil}">`
+            p_perfil.classList.add("p_perfil")
+
+            //
+            div_func.appendChild(img_perfil)
+            div_func.appendChild(p_nome)
+            div_func.appendChild(p_cargo)
+
+            //
+            div.appendChild(div_func)
+
+            //novos_funcionarios.reset()
+
+        })
+    </script>
+
+</body>
+</html>
